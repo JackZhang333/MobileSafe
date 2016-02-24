@@ -86,7 +86,7 @@ public class SplashActivity extends Activity {
 	 */
 	protected void enterHome() {
 		// TODO Auto-generated method stub
-		Intent intent = new Intent(this, MainActivity.class);
+		Intent intent = new Intent(this, HomeActivity.class);
 		startActivity(intent);
 		finish();
 	}

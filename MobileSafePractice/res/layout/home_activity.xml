@@ -5,10 +5,22 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="wrap_content"
+        style="@style/TitleStyle"
+        android:text="功能列表"
+         />
+    <com.jack.mobilesafe.view.HomeTextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="this is main activity"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-  
+        android:singleLine="true"
+        android:text="手机安全卫士，防火防盗防色狼，您安全的保障，正确的选择！"
+        android:ellipsize="marquee"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        />
+  	<GridView 
+  	    android:id="@+id/gv_home"
+  	    android:layout_width="match_parent"
+  	    android:layout_height="match_parent"
+  	    android:numColumns="3"
+  	    android:horizontalSpacing="5dp"/>
 </LinearLayout>
