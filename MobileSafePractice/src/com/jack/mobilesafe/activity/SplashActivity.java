@@ -43,6 +43,7 @@ public class SplashActivity extends Activity {
 	
 	private final int CODE_UPDATEDIALOG =1;
 	private final int CODE_ENTERHOME=2;
+	private final int CODE_INTERNETFAILED=3;
 	
 	private TextView tvName;
 	private TextView tvDownload;
@@ -53,14 +54,27 @@ public class SplashActivity extends Activity {
 	private String description;
 	private String mUrl;
 	
+	private boolean isUpdate;
+	
 	private Handler mHandler =new Handler(){
 		public void handleMessage(Message msg){
 			switch(msg.what){
 			case CODE_UPDATEDIALOG:
-				showUpdateDialog();
+				isUpdate = getSharedPreferences("settingfile", MODE_PRIVATE).getBoolean("update", true);
+				if(isUpdate){
+					showUpdateDialog();
+				}else{
+					enterHome();
+				}
 				break;
 			case CODE_ENTERHOME:
 				enterHome();
+				break;
+			case CODE_INTERNETFAILED:
+				Toast.makeText(getApplicationContext(), "ÍøÂçÁ¬½Ó´íÎó£¡", Toast.LENGTH_SHORT).show();
+				enterHome();
+				break;
+			default:
 				break;
 			}
 		}
@@ -177,6 +191,7 @@ public class SplashActivity extends Activity {
 		new Thread(){
 			Message msg=Message.obtain();
 			long startTiem=System.currentTimeMillis();
+			
 
 			@Override
 			public void run(){
@@ -215,6 +230,7 @@ public class SplashActivity extends Activity {
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					msg.what = CODE_INTERNETFAILED;
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -268,6 +284,4 @@ public class SplashActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		enterHome();
 	}
-
-	
 }

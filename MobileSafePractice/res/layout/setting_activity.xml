@@ -8,6 +8,9 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:text="设置中心"/>
-    
 
+    <com.jack.mobilesafe.view.SettingItemView
+        android:id="@+id/siv_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

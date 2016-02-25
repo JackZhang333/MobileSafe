@@ -29,7 +29,10 @@
             android:id="@+id/cb_Switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="false"/>
         <View 
             android:layout_height="1px"
             android:layout_width="match_parent"
