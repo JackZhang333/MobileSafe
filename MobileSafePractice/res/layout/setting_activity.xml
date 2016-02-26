@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:jack="http://schemas.android.com/apk/res/com.jack.mobliesafepractice"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -12,5 +14,8 @@
     <com.jack.mobilesafe.view.SettingItemView
         android:id="@+id/siv_update"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        jack:title="自动更新"
+        jack:desc_on="自动更新现在已打开"
+        jack:desc_off="自动更新现在已关闭" />
 </LinearLayout>

@@ -4,6 +4,7 @@ import com.jack.mobliesafepractice.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -15,6 +16,11 @@ public class SettingItemView extends RelativeLayout {
 	private TextView mTitle;
 	private TextView mDesc;
 	private CheckBox mCheck;
+	
+	private String NAME_SPACE ="http://schemas.android.com/apk/res/com.jack.mobliesafepractice";
+	private String title;
+	private String desc_on;
+	private String desc_off;
 
 	public SettingItemView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
@@ -26,6 +32,12 @@ public class SettingItemView extends RelativeLayout {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 		initView();
+		title = attrs.getAttributeValue(NAME_SPACE, "title");
+		Log.d("SettingItemView","获取的标题是："+title);
+		desc_on = attrs.getAttributeValue(NAME_SPACE, "desc_on");
+		desc_off = attrs.getAttributeValue(NAME_SPACE, "desc_off");
+		
+		setTitle(title);
 	}
 
 	public SettingItemView(Context context) {
@@ -52,7 +64,7 @@ public class SettingItemView extends RelativeLayout {
 		mTitle.setText(title);
 	}
 	/**
-	 * 设置描述
+	 * 设置描述的状态
 	 */
 	public void setDesc(String desc){
 		mDesc.setText(desc);
@@ -62,11 +74,19 @@ public class SettingItemView extends RelativeLayout {
 	 */
 	public void setCheck(boolean checked){
 		mCheck.setChecked(checked);
+		//设置更新的状态
+		if(checked){
+			setDesc(desc_on);
+		}else{
+			setDesc(desc_off);
+		}
 	}
 	/**
 	 * 检查复选框是否选中
 	 */
 	public boolean isChecked(){
 		return mCheck.isChecked();
+		
+		
 	}
 }

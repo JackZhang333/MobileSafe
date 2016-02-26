@@ -9,6 +9,30 @@ package com.jack.mobliesafepractice;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int desc_off=0x7f010002;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int desc_on=0x7f010001;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int title=0x7f010000;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -35,23 +59,30 @@ public final class R {
         public static final int launcher_bg=0x7f02000a;
     }
     public static final class id {
-        public static final int cb_Switch=0x7f070006;
+        public static final int bt_cancle=0x7f070005;
+        public static final int bt_ok=0x7f070004;
+        public static final int cb_Switch=0x7f07000a;
+        public static final int et_confir_mpwd=0x7f070006;
+        public static final int et_pwd=0x7f070003;
         public static final int gv_home=0x7f070000;
         public static final int iv_itemImag=0x7f070001;
-        public static final int pb_loading=0x7f070008;
-        public static final int siv_update=0x7f070003;
-        public static final int tv_download=0x7f070009;
+        public static final int pb_loading=0x7f07000c;
+        public static final int siv_update=0x7f070007;
+        public static final int tv_download=0x7f07000d;
         public static final int tv_itemName=0x7f070002;
-        public static final int tv_item_settingName=0x7f070004;
-        public static final int tv_item_settingdesc=0x7f070005;
-        public static final int tv_name=0x7f070007;
+        public static final int tv_item_settingName=0x7f070008;
+        public static final int tv_item_settingdesc=0x7f070009;
+        public static final int tv_name=0x7f07000b;
     }
     public static final class layout {
-        public static final int home_activity=0x7f030000;
-        public static final int item_layout=0x7f030001;
-        public static final int setting_activity=0x7f030002;
-        public static final int setting_item_layout=0x7f030003;
-        public static final int splash_activity=0x7f030004;
+        public static final int guide1_activity=0x7f030000;
+        public static final int home_activity=0x7f030001;
+        public static final int item_layout=0x7f030002;
+        public static final int pwdinput_dialog_layout=0x7f030003;
+        public static final int pwdset_dialog_layout=0x7f030004;
+        public static final int setting_activity=0x7f030005;
+        public static final int setting_item_layout=0x7f030006;
+        public static final int splash_activity=0x7f030007;
     }
     public static final class string {
         public static final int action_settings=0x7f050003;
@@ -85,4 +116,65 @@ public final class R {
          */
         public static final int TitleStyle=0x7f060002;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a SettingItemView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #SettingItemView_desc_off com.jack.mobliesafepractice:desc_off}</code></td><td></td></tr>
+           <tr><td><code>{@link #SettingItemView_desc_on com.jack.mobliesafepractice:desc_on}</code></td><td></td></tr>
+           <tr><td><code>{@link #SettingItemView_title com.jack.mobliesafepractice:title}</code></td><td></td></tr>
+           </table>
+           @see #SettingItemView_desc_off
+           @see #SettingItemView_desc_on
+           @see #SettingItemView_title
+         */
+        public static final int[] SettingItemView = {
+            0x7f010000, 0x7f010001, 0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.jack.mobliesafepractice.R.attr#desc_off}
+          attribute's value can be found in the {@link #SettingItemView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.jack.mobliesafepractice:desc_off
+        */
+        public static final int SettingItemView_desc_off = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.jack.mobliesafepractice.R.attr#desc_on}
+          attribute's value can be found in the {@link #SettingItemView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.jack.mobliesafepractice:desc_on
+        */
+        public static final int SettingItemView_desc_on = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.jack.mobliesafepractice.R.attr#title}
+          attribute's value can be found in the {@link #SettingItemView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.jack.mobliesafepractice:title
+        */
+        public static final int SettingItemView_title = 0;
+    };
 }

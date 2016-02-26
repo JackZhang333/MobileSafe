@@ -23,7 +23,7 @@
             android:textSize="14sp"
             android:textColor="#aaa"
             android:layout_below="@id/tv_item_settingName"
-            android:text="自动更新已打开"
+            android:text="update已打开"
             android:paddingTop="2dp"/>
         <CheckBox 
             android:id="@+id/cb_Switch"

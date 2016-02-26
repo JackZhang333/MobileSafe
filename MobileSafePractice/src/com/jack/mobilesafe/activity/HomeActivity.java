@@ -1,17 +1,26 @@
 package com.jack.mobilesafe.activity;
 
+import com.jack.mobliesafe.utils.MD5Utils;
+import com.jack.mobliesafe.utils.SharedPreferencesUtils;
+import com.jack.mobliesafe.utils.ToastUtils;
 import com.jack.mobliesafepractice.R;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -50,6 +59,17 @@ public class HomeActivity extends Activity {
 					int position, long id) {
 				// TODO Auto-generated method stub
 				switch(position){
+				//进入手机防盗
+				case 0:
+					//判断是否要设置密码，或者是输入密码
+					if(!pwdBeSetted()){
+						//显示密码输入框
+						showSetArlertDialog();
+					}else{
+						//显示密码设置框
+						showInputAlertDialog();
+					}
+					break;
 				//进入设置中心
 				case 8:
 					Log.d("HomeActivity", "点击了第九个按钮！");
@@ -61,6 +81,118 @@ public class HomeActivity extends Activity {
 				}
 			}
 		});
+	}
+	/**
+	 * 展示密码输入界面
+	 */
+	protected void showInputAlertDialog() {
+		// TODO Auto-generated method stub
+		Builder builder = new AlertDialog.Builder(this);
+		final AlertDialog dialog =builder.create();
+		
+		View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.pwdinput_dialog_layout, null);
+		dialog.setView(view, 0, 0, 0, 0);
+		
+		EditText et_pwd =(EditText) view.findViewById(R.id.et_pwd);
+		
+		Button bt_ok = (Button) view.findViewById(R.id.bt_ok);
+		Button bt_cancel =(Button) view.findViewById(R.id.bt_cancle);
+		
+		final String pwd = et_pwd.getText().toString().trim();
+		
+		
+		bt_ok.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(!TextUtils.isEmpty(pwd)){
+					//对比本地存储中的密码
+					String spf_pwd = SharedPreferencesUtils.getString(getApplicationContext(), "pwd", "") ;
+					String md5_pwd = MD5Utils.encode(pwd);
+					if(spf_pwd.equals(md5_pwd)){
+					//密码正确
+						dialog.dismiss();
+						startActivity(new Intent(getApplicationContext(),Guide1Activity.class));
+					}else{
+						ToastUtils.show(getApplicationContext(), "你输入的密码错误，请重新输入！");
+					}
+				}else{
+					ToastUtils.show(getApplicationContext(), "你输入的密码为空！");
+				}
+			}	
+		});
+		bt_cancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
+		
+		dialog.show();
+	}
+	/**
+	 * 展现密码设置界面
+	 */
+	protected void showSetArlertDialog() {
+		// TODO Auto-generated method stub
+		Builder builder = new AlertDialog.Builder(this);
+		final AlertDialog dialog =builder.create();
+		
+		View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.pwdset_dialog_layout, null);
+		dialog.setView(view, 0, 0, 0, 0);
+		
+		EditText et_pwd =(EditText) view.findViewById(R.id.et_pwd);
+		EditText et_confirm_pwd = (EditText) view.findViewById(R.id.et_confir_mpwd);
+		
+		Button bt_ok = (Button) view.findViewById(R.id.bt_ok);
+		Button bt_cancel =(Button) view.findViewById(R.id.bt_cancle);
+		
+		final String pwd = et_pwd.getText().toString().trim();
+		final String confirm_pwd = et_confirm_pwd.getText().toString().trim();
+		
+		bt_ok.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(!TextUtils.isEmpty(pwd)&&!TextUtils.isEmpty(confirm_pwd)){
+					//两个文本输入框都不为空
+					if(pwd.equals(confirm_pwd)){
+						//两次输入的密码相同
+						SharedPreferencesUtils.putString(getApplicationContext(), "pwd", MD5Utils.encode(pwd));
+						SharedPreferencesUtils.putBoolean(getApplicationContext(), true,"pwdSetted");
+						
+						dialog.dismiss();
+						startActivity(new Intent(getApplicationContext(),Guide1Activity.class));
+						
+					}else{
+						ToastUtils.show(getApplicationContext(), "两次输入的密码不一样！");
+					}
+				}else{
+					ToastUtils.show(getApplicationContext(), "你输入的密码为空，请重新输入！");
+				}
+			}
+		});
+		bt_cancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+		});
+		
+		dialog.show();
+	}
+	/**
+	 * 判断是否设置过手机防盗的密码
+	 */
+	protected boolean pwdBeSetted() {
+		// TODO Auto-generated method stub
+		return SharedPreferencesUtils.getBoolean(this, "pwdSetted", false);
 	}
 	/**
 	 * 创建网格布局适配器类
