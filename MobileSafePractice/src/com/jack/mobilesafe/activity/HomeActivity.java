@@ -93,18 +93,19 @@ public class HomeActivity extends Activity {
 		View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.pwdinput_dialog_layout, null);
 		dialog.setView(view, 0, 0, 0, 0);
 		
-		EditText et_pwd =(EditText) view.findViewById(R.id.et_pwd);
+		final EditText et_pwd =(EditText) view.findViewById(R.id.input_et_pwd);
 		
 		Button bt_ok = (Button) view.findViewById(R.id.bt_ok);
 		Button bt_cancel =(Button) view.findViewById(R.id.bt_cancle);
 		
-		final String pwd = et_pwd.getText().toString().trim();
 		
 		
 		bt_ok.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				//点击确定按钮之后再取值
+				String pwd = et_pwd.getText().toString().trim();
 				// TODO Auto-generated method stub
 				if(!TextUtils.isEmpty(pwd)){
 					//对比本地存储中的密码
@@ -113,7 +114,7 @@ public class HomeActivity extends Activity {
 					if(spf_pwd.equals(md5_pwd)){
 					//密码正确
 						dialog.dismiss();
-						startActivity(new Intent(getApplicationContext(),Guide1Activity.class));
+						startActivity(new Intent(getApplicationContext(),LostAndFindActivity.class));
 					}else{
 						ToastUtils.show(getApplicationContext(), "你输入的密码错误，请重新输入！");
 					}
@@ -144,19 +145,20 @@ public class HomeActivity extends Activity {
 		View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.pwdset_dialog_layout, null);
 		dialog.setView(view, 0, 0, 0, 0);
 		
-		EditText et_pwd =(EditText) view.findViewById(R.id.et_pwd);
-		EditText et_confirm_pwd = (EditText) view.findViewById(R.id.et_confir_mpwd);
+		final EditText et_pwd =(EditText) view.findViewById(R.id.et_pwd);
+		final EditText et_confirm_pwd = (EditText) view.findViewById(R.id.et_confir_mpwd);
 		
 		Button bt_ok = (Button) view.findViewById(R.id.bt_ok);
 		Button bt_cancel =(Button) view.findViewById(R.id.bt_cancle);
 		
-		final String pwd = et_pwd.getText().toString().trim();
-		final String confirm_pwd = et_confirm_pwd.getText().toString().trim();
 		
 		bt_ok.setOnClickListener(new OnClickListener() {
 			
+			
 			@Override
 			public void onClick(View v) {
+				String pwd = et_pwd.getText().toString().trim();
+				String confirm_pwd = et_confirm_pwd.getText().toString().trim();
 				// TODO Auto-generated method stub
 				if(!TextUtils.isEmpty(pwd)&&!TextUtils.isEmpty(confirm_pwd)){
 					//两个文本输入框都不为空

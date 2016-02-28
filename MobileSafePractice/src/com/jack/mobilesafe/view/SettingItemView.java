@@ -33,7 +33,7 @@ public class SettingItemView extends RelativeLayout {
 		// TODO Auto-generated constructor stub
 		initView();
 		title = attrs.getAttributeValue(NAME_SPACE, "title");
-		Log.d("SettingItemView","获取的标题是："+title);
+//		Log.d("SettingItemView","获取的标题是："+title);
 		desc_on = attrs.getAttributeValue(NAME_SPACE, "desc_on");
 		desc_off = attrs.getAttributeValue(NAME_SPACE, "desc_off");
 		

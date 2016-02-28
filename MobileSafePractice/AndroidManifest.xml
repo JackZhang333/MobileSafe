@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
 
     <application
         android:allowBackup="true"
@@ -30,7 +31,19 @@
         <activity android:name="com.jack.mobilesafe.activity.SettingActivity" >
         </activity>
         
+        
+        <activity android:name="com.jack.mobilesafe.activity.LostAndFindActivity" >
+        </activity>
+        
         <activity android:name="com.jack.mobilesafe.activity.Guide1Activity" >
+        </activity>
+        
+        <activity android:name="com.jack.mobilesafe.activity.Guide2Activity" >
+        </activity>
+        <activity android:name="com.jack.mobilesafe.activity.Guide3Activity" >
+        </activity>
+       
+        <activity android:name="com.jack.mobilesafe.activity.Guide4Activity" >
         </activity>
        
     </application>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jack="http://schemas.android.com/apk/res/com.jack.mobliesafepractice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+        style="@style/TitleStyle"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="4.恭喜你设置完成"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_protect"/>
+        <TextView 
+        style="@style/ContentStyle"
+        android:text="你没有开启防盗保护"
+        android:gravity="center_vertical"
+        />
+    </LinearLayout>
+    
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        
+        <ImageView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+        
+        <ImageView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+        
+        <ImageView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/presence_invisible"/>
+        <ImageView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:src="@android:drawable/presence_online"/>
+    </LinearLayout>
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ImageView 
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/phone"/>
+        <Button 
+            android:text="上一步"
+            android:id="@+id/btn_previous4"
+            style="@style/PreviousButtonStyle"/>
+        <Button 
+            android:text="设置完成"
+            android:id="@+id/btn_next4"
+            style="@style/NextButtonStyle"/>
+    </RelativeLayout>
+
+</LinearLayout>
